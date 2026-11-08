@@ -496,9 +496,16 @@ async function embedReportImages(sourceHtml){
       if(loading)loading.remove();
     }catch(err){
       failed++;
-      img.remove();
-      const loading=img.parentElement.querySelector('.photo-loading');
-      if(loading)loading.textContent='Foto gagal dimuat: '+(err.message||'periksa koneksi backend');
+      // Simpan parent sebelum mengubah elemen gambar agar tidak membaca parentElement
+      // setelah img dihapus (penyebab error querySelector pada V4).
+      const photoContainer=img.parentElement;
+      img.style.display='none';
+      if(photoContainer){
+        const loading=photoContainer.querySelector('.photo-loading');
+        if(loading)loading.textContent='Foto gagal dimuat: '+(err && err.message ? err.message : 'periksa koneksi backend');
+        else photoContainer.textContent='Foto gagal dimuat: '+(err && err.message ? err.message : 'periksa koneksi backend');
+      }
+      console.error('WT AM: gagal memuat foto laporan',photoUrl,err);
     }
   }));
   return {html:doc.body.innerHTML,failed};
