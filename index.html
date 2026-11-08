@@ -26,7 +26,7 @@ input,select,textarea{width:100%;border:1px solid #cbd5e1;border-radius:12px;bac
 .login-wrap{max-width:520px;margin:30px auto}.empty{text-align:center;padding:35px;color:#94a3b8}.empty strong{display:block;color:#475569;margin-bottom:5px}.draft-card{border-left:5px solid #2563eb}.info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.info-chip{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:9px}.info-chip b{display:block;font-size:11px}.info-chip span{font-size:10px;color:var(--muted)}
 .toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#111827;color:#fff;padding:12px 16px;border-radius:12px;font-size:13px;font-weight:800;transition:.2s;z-index:99}.toast.show{opacity:1;transform:translate(-50%,0)}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:50;display:flex;align-items:flex-end;justify-content:center}.modal-card{background:#fff;width:min(820px,100%);max-height:94vh;overflow:auto;border-radius:22px 22px 0 0;padding:17px}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.close{border:0;background:#f1f5f9;border-radius:10px;padding:8px 12px;font-weight:900}
-.report-page{font-family:Arial,Helvetica,sans-serif;color:#111;background:#fff;padding:24px;max-width:850px;margin:auto}.report-title{text-align:center;font-size:22px;font-weight:900;margin-bottom:3px}.report-sub{text-align:center;font-size:11px;color:#666;margin-bottom:18px}.report-meta{width:100%;border-collapse:collapse;margin-bottom:18px;font-size:11px}.report-meta td{border:1px solid #888;padding:7px}.report-meta td:nth-child(odd){font-weight:bold;background:#f1f5f9;width:100px}.report-item{border:1px solid #777;margin-bottom:20px;page-break-inside:avoid}.report-item-title{background:#e5e7eb;padding:8px;font-weight:bold;border-bottom:1px solid #777}.report-two{display:grid;grid-template-columns:40% 60%;min-height:170px}.report-photo{padding:10px;border-right:1px solid #777;display:flex;align-items:center;justify-content:center;min-height:170px}.report-photo img{max-width:100%;max-height:230px;object-fit:contain}.report-text{padding:10px;font-size:11px;line-height:1.55;white-space:pre-wrap}.report-section{background:#f1f5f9;border-top:1px solid #777;border-bottom:1px solid #777;padding:7px;font-weight:bold;font-size:11px}.report-footer{text-align:center;color:#777;font-size:9px;margin-top:20px}
+.report-page{font-family:Arial,Helvetica,sans-serif;color:#111;background:#fff;padding:24px;max-width:850px;margin:auto}.report-title{text-align:center;font-size:22px;font-weight:900;margin-bottom:3px}.report-sub{text-align:center;font-size:11px;color:#666;margin-bottom:18px}.report-meta{width:100%;border-collapse:collapse;margin-bottom:18px;font-size:11px}.report-meta td{border:1px solid #888;padding:7px}.report-meta td:nth-child(odd){font-weight:bold;background:#f1f5f9;width:100px}.report-item{border:1px solid #777;margin-bottom:20px;page-break-inside:avoid}.report-item-title{background:#e5e7eb;padding:8px;font-weight:bold;border-bottom:1px solid #777}.report-two{display:grid;grid-template-columns:40% 60%;min-height:170px}.report-photo{padding:10px;border-right:1px solid #777;display:flex;align-items:center;justify-content:center;min-height:170px}.report-photo img{max-width:100%;max-height:230px;object-fit:contain}.photo-loading{font-size:10px;color:#64748b;text-align:center}.report-text{padding:10px;font-size:11px;line-height:1.55;white-space:pre-wrap}.report-section{background:#f1f5f9;border-top:1px solid #777;border-bottom:1px solid #777;padding:7px;font-weight:bold;font-size:11px}.report-footer{text-align:center;color:#777;font-size:9px;margin-top:20px}
 @media(max-width:700px){main{padding:11px}.grid,.dashboard-grid,.info-grid{grid-template-columns:1fr}.role-grid{grid-template-columns:1fr}.finding-grid{grid-template-columns:1fr}.finding-photo{border-right:0;border-bottom:1px solid var(--line)}.stat-grid{grid-template-columns:1fr}.actions .btn{min-width:105px}.report-two{grid-template-columns:1fr}.report-photo{border-right:0;border-bottom:1px solid #777}.table{min-width:760px}}
 @media print{body{background:#fff}.topbar,body>div:not(.app),main{display:none!important}.print-area{display:block!important}.report-page{max-width:none;padding:0}.report-item{break-inside:avoid}}
 </style>
@@ -94,7 +94,7 @@ input,select,textarea{width:100%;border:1px solid #cbd5e1;border-radius:12px;bac
 </main></div>
 <div id="toast" class="toast"></div>
 <div id="followModal" class="modal hidden"><div class="modal-card"><div class="modal-head"><h3 style="margin:0">Follow Up Temuan</h3><button class="close" onclick="closeModal()">Tutup</button></div><div id="followContent"></div></div></div>
-<div id="reportModal" class="modal hidden"><div class="modal-card"><div class="modal-head"><h3 style="margin:0">Preview Laporan</h3><div class="actions" style="width:auto"><button class="btn btn-blue btn-small" onclick="printReport()">PDF / Print</button><button class="btn btn-green btn-small" onclick="downloadCurrentWord()">Word</button><button class="close" onclick="closeReport()">Tutup</button></div></div><div id="reportPreview"></div></div></div>
+<div id="reportModal" class="modal hidden"><div class="modal-card"><div class="modal-head"><h3 style="margin:0">Preview Laporan</h3><div class="actions" style="width:auto"><button class="btn btn-blue btn-small" onclick="printReport()">PDF / Print</button><button class="btn btn-green btn-small" onclick="downloadCurrentWord()">Word</button><button class="btn btn-purple btn-small" onclick="shareCurrentWord()">Bagikan</button><button class="close" onclick="closeReport()">Tutup</button></div></div><div id="reportPreview"></div></div></div>
 
 <script>
 'use strict';
@@ -453,53 +453,144 @@ async function verifyFinding(id,approved){
   }catch(e){toast(e.message,5000);}
 }
 
-/* REPORT / EXPORT */
+/* REPORT / EXPORT — GITHUB FRONTEND */
 function reportHtml(rows,title='LAPORAN WALKTHROUGH'){
   if(!rows.length)return '<div class="empty">Tidak ada data untuk laporan.</div>';
   const first=rows[0];
+  const photo=(url,alt,emptyText)=>url
+    ? `<img src="" data-photo-url="${esc(url)}" alt="${esc(alt)}"><span class="photo-loading">Memuat foto...</span>`
+    : esc(emptyText);
   return `<div class="report-page">
     <div class="report-title">WT AM AREA RYTNO</div><div class="report-sub">${esc(title)}</div>
     <table class="report-meta"><tr><td>STORE</td><td>${esc(first.STORE)}</td><td>TANGGAL</td><td>${esc(first.TANGGAL_WALKTHROUGH)}</td></tr><tr><td>AREA</td><td>${esc(first.AREA)}</td><td>TOTAL TEMUAN</td><td>${rows.length}</td></tr></table>
     ${rows.map((x,i)=>`<div class="report-item">
       <div class="report-item-title">TEMUAN ${i+1} — ${esc(x.KATEGORI)} / ${esc(x.PRIORITAS)} / ${esc(x.STATUS)}</div>
       <div class="report-section">BEFORE — KETERANGAN TEMUAN</div>
-      <div class="report-two"><div class="report-photo">${x['URL FOTO BEFORE']?`<img src="${esc(x['URL FOTO BEFORE'])}" alt="Before">`:'Tidak ada foto Before'}</div><div class="report-text">${esc(x['KETERANGAN TEMUAN'])}</div></div>
+      <div class="report-two"><div class="report-photo">${photo(x['URL FOTO BEFORE'],'Before','Tidak ada foto Before')}</div><div class="report-text">${esc(x['KETERANGAN TEMUAN'])}</div></div>
       <div class="report-section">AFTER — TINDAKAN PERBAIKAN</div>
-      <div class="report-two"><div class="report-photo">${x['URL FOTO AFTER']?`<img src="${esc(x['URL FOTO AFTER'])}" alt="After">`:'Belum ada foto After'}</div><div class="report-text">${esc(x['TINDAKAN STORE']||'Belum ada tindak lanjut')}</div></div>
+      <div class="report-two"><div class="report-photo">${photo(x['URL FOTO AFTER'],'After','Belum ada foto After')}</div><div class="report-text">${esc(x['TINDAKAN STORE']||'Belum ada tindak lanjut')}</div></div>
       ${x['CATATAN AM']?`<div class="report-section">CATATAN VERIFIKASI AM</div><div class="report-text">${esc(x['CATATAN AM'])}</div>`:''}
     </div>`).join('')}
     <div class="report-footer">Generated by WT AM Area RYTNO</div></div>`;
 }
-function openReport(id){
-  const rows=adminFindingsCache.filter(x=>x['ID TEMUAN']===id);if(!rows.length)return;
+
+/*
+ * Foto Drive tidak ditempel sebagai URL biasa.
+ * Frontend GitHub meminta backend Apps Script mengubah foto menjadi dataUrl/Base64,
+ * kemudian menyisipkannya ke HTML laporan agar ikut terbawa ke Print dan Word.
+ */
+async function embedReportImages(sourceHtml){
+  const parser=new DOMParser();
+  const doc=parser.parseFromString(sourceHtml,'text/html');
+  const images=[...doc.querySelectorAll('img[data-photo-url]')];
+  let failed=0;
+  await Promise.all(images.map(async img=>{
+    const photoUrl=img.getAttribute('data-photo-url');
+    try{
+      const result=await api('getPhotoData',{url:photoUrl});
+      const dataUrl=result.dataUrl||result.dataURL||result.base64DataUrl;
+      if(!dataUrl||!String(dataUrl).startsWith('data:image/'))throw new Error('Data foto tidak ditemukan dari backend.');
+      img.setAttribute('src',dataUrl);
+      img.removeAttribute('data-photo-url');
+      const loading=img.parentElement.querySelector('.photo-loading');
+      if(loading)loading.remove();
+    }catch(err){
+      failed++;
+      img.remove();
+      const loading=img.parentElement.querySelector('.photo-loading');
+      if(loading)loading.textContent='Foto gagal dimuat: '+(err.message||'periksa koneksi backend');
+    }
+  }));
+  return {html:doc.body.innerHTML,failed};
+}
+async function prepareReport(rows,title){
+  const raw=reportHtml(rows,title);
+  toast('Menyiapkan laporan dan mengambil foto...',5000);
+  const result=await embedReportImages(raw);
+  currentReportHtml=result.html;
+  if(result.failed)toast(result.failed+' foto gagal dimuat. Periksa koneksi API / fungsi getPhotoData.',6000);
+  else toast('Laporan dan foto berhasil disiapkan.',2500);
+  return currentReportHtml;
+}
+async function openReport(id){
+  const rows=adminFindingsCache.filter(x=>x['ID TEMUAN']===id);
+  if(!rows.length)return;
   currentReportTitle='WT_'+id;
-  currentReportHtml=reportHtml(rows,'DETAIL WALKTHROUGH / FINDING');
-  $('reportPreview').innerHTML=currentReportHtml;$('reportModal').classList.remove('hidden');
+  $('reportPreview').innerHTML='<div class="empty">Menyiapkan laporan dan memuat foto dari Google Drive...</div>';
+  $('reportModal').classList.remove('hidden');
+  try{
+    const ready=await prepareReport(rows,'DETAIL WALKTHROUGH / FINDING');
+    $('reportPreview').innerHTML=ready;
+  }catch(e){
+    $('reportPreview').innerHTML='<div class="empty">Gagal menyiapkan laporan: '+esc(e.message)+'</div>';
+    toast(e.message,6000);
+  }
 }
 function closeReport(){$('reportModal').classList.add('hidden');}
+function reportCss(){
+ return `body{font-family:Arial,Helvetica,sans-serif;margin:20px;color:#111;background:#fff}
+ .report-page{font-family:Arial,Helvetica,sans-serif;color:#111;background:#fff;padding:24px;max-width:850px;margin:auto}
+ .report-title{text-align:center;font-size:22px;font-weight:900;margin-bottom:3px}
+ .report-sub{text-align:center;font-size:11px;color:#666;margin-bottom:18px}
+ .report-meta{width:100%;border-collapse:collapse;margin-bottom:18px;font-size:11px}
+ .report-meta td{border:1px solid #888;padding:7px}
+ .report-meta td:nth-child(odd){font-weight:bold;background:#f1f5f9;width:100px}
+ .report-item{border:1px solid #777;margin-bottom:20px;page-break-inside:avoid;break-inside:avoid}
+ .report-item-title{background:#e5e7eb;padding:8px;font-weight:bold;border-bottom:1px solid #777}
+ .report-section{background:#f1f5f9;border-top:1px solid #777;border-bottom:1px solid #777;padding:7px;font-weight:bold;font-size:11px}
+ .report-two{display:grid;grid-template-columns:40% 60%;min-height:170px}
+ .report-photo{padding:10px;border-right:1px solid #777;display:flex;align-items:center;justify-content:center;min-height:170px}
+ .report-photo img{max-width:100%;max-height:230px;object-fit:contain}.photo-loading{font-size:10px;color:#64748b;text-align:center}
+ .report-text{padding:10px;font-size:11px;line-height:1.55;white-space:pre-wrap}
+ .report-footer{text-align:center;color:#777;font-size:9px;margin-top:20px}
+ @media print{body{margin:10mm}.report-page{max-width:none;padding:0}.report-item{break-inside:avoid}}`;
+}
 function printReport(){
+  if(!currentReportHtml)return toast('Laporan belum siap.');
   const w=window.open('','_blank');
   if(!w)return toast('Izinkan pop-up browser untuk mencetak laporan.');
-  w.document.write(`<!DOCTYPE html><html><head><title>${esc(currentReportTitle)}</title><style>body{font-family:Arial;margin:20px}.report-page{max-width:850px;margin:auto}.report-title{text-align:center;font-size:22px;font-weight:bold}.report-sub{text-align:center;margin-bottom:18px}.report-meta{width:100%;border-collapse:collapse;margin-bottom:18px}.report-meta td{border:1px solid #777;padding:7px}.report-item{border:1px solid #777;margin-bottom:18px;break-inside:avoid}.report-item-title,.report-section{background:#eee;padding:8px;font-weight:bold;border-bottom:1px solid #777}.report-two{display:grid;grid-template-columns:40% 60%;min-height:160px}.report-photo,.report-text{padding:10px;border:1px solid #ddd;display:flex;align-items:center;white-space:pre-wrap}.report-photo img{max-width:100%;max-height:220px}.report-footer{text-align:center;margin-top:15px}@media print{.report-item{break-inside:avoid}}</style></head><body>${currentReportHtml}</body></html>`);
-  w.document.close();w.onload=()=>w.print();
+  w.document.open();
+  w.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(currentReportTitle)}</title><style>${reportCss()}</style></head><body>${currentReportHtml}</body></html>`);
+  w.document.close();
+  const doPrint=()=>setTimeout(()=>{w.focus();w.print();},500);
+  if(w.document.readyState==='complete')doPrint();
+  else w.onload=doPrint;
 }
 function downloadCurrentWord(){
-  if(!currentReportHtml)return;
-  downloadBlob('\ufeff'+currentReportHtml,'application/msword',currentReportTitle+'.doc');
+  if(!currentReportHtml)return toast('Laporan belum siap.');
+  const full=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(currentReportTitle)}</title><style>${reportCss()}</style></head><body>${currentReportHtml}</body></html>`;
+  downloadBlob('\ufeff'+full,'application/msword',currentReportTitle+'.doc');
 }
-function exportAllCurrent(type){
+async function shareCurrentWord(){
+  if(!currentReportHtml)return toast('Buka preview laporan terlebih dahulu.');
+  const full=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(currentReportTitle)}</title><style>${reportCss()}</style></head><body>${currentReportHtml}</body></html>`;
+  const file=new File(['\ufeff'+full],currentReportTitle+'.doc',{type:'application/msword'});
+  try{
+    if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
+      await navigator.share({title:currentReportTitle,text:'Laporan Walkthrough AM',files:[file]});
+    }else{
+      downloadCurrentWord();
+      toast('Browser belum mendukung berbagi file langsung. File Word diunduh; silakan bagikan melalui aplikasi pilihan.');
+    }
+  }catch(e){
+    if(e.name!=='AbortError')toast('Gagal membagikan file: '+e.message,5000);
+  }
+}
+async function exportAllCurrent(type){
   const rows=adminFindingsCache;
   if(!rows.length)return toast('Belum ada data untuk diexport.');
   currentReportTitle='WT_AM_AREA_RYTNO';
-  currentReportHtml=reportHtml(rows,'REKAP SELURUH TEMUAN');
-  if(type==='pdf')printReport();
-  else downloadCurrentWord();
+  try{
+    await prepareReport(rows,'REKAP SELURUH TEMUAN');
+    if(type==='pdf')printReport();
+    else downloadCurrentWord();
+  }catch(e){toast('Export gagal: '+e.message,6000);}
 }
 function downloadBlob(content,mime,name){
   const blob=new Blob([content],{type:mime+';charset=utf-8'});
   const url=URL.createObjectURL(blob);const a=document.createElement('a');
   a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();
-  setTimeout(()=>URL.revokeObjectURL(url),1500);
+  setTimeout(()=>URL.revokeObjectURL(url),5000);
 }
 </script>
 </body>
