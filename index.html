@@ -108,7 +108,7 @@ function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&l
 function api(action,data={}){if(!API_URL||API_URL.includes('PASTE_'))return Promise.reject(new Error('API_URL belum diisi.'));return fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action,...data})}).then(async r=>{const text=await r.text();try{return JSON.parse(text)}catch(e){throw new Error('Response backend bukan JSON: '+text.slice(0,180))}})}
 function hideAll(){['home','adminLogin','storeLogin','adminApp','draftSection','walkthroughForm','storeApp'].forEach(id=>$(id).classList.add('hidden'))}
 function backHome(){hideAll();$('home').classList.remove('hidden')}
-function showAdminLogin(){hideAll();$('adminLogin').classList.remove('hidden');$('adminCode').value='RYTNIADMIN';$('adminPassword').value='RYTNO2026'}
+function showAdminLogin(){hideAll();$('adminLogin').classList.remove('hidden');$('adminCode').value='RYTNOADMIN';$('adminPassword').value='RYTNO2026'}
 function showStoreLogin(){hideAll();$('storeLogin').classList.remove('hidden');fillStores('storeLoginSelect')}
 function fillStores(id){$(id).innerHTML='<option value="">-- Pilih Store --</option>'+STORES.map(s=>`<option value="${esc(s)}">${esc(s)}</option>`).join('')}
 function fillDate(){ $('wtDate').value=today() }
